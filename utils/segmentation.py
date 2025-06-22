@@ -77,11 +77,16 @@ def run_full_analysis(file_path, n_clusters_chosen, harga_produk, tujuan_kampany
     cluster_descriptions = {}
     for i in range(n_clusters_chosen):
         p = cluster_profiles.loc[i]
-        desc = (f"**Klaster {i}**: Pelanggan berusia sekitar **{int(p['Age'])} tahun**, pendapatan tahunan **Rp {p['Annual_Income'] / 1_000_000:.2f} Juta**, "
-                f"total pengeluaran **Rp {p['Total_Spend'] / 1_000_000:.2f} Juta**, dan skor kepuasan **{p['Satisfaction_Score']}**. "
-                f"Dominan **{'Pria' if p['Gender'] == 'Pria' else 'Wanita'}**, "
-                f"**{'sering' if p['Num_of_Purchases'] > df['Num_of_Purchases'].mean() else 'jarang'}** berbelanja. "
-                f"Respons promosi: **'{p['Promotion_Response']}'**. Status churn: **{'Cenderung Churn' if p['Target_Churn'] else 'Tidak Cenderung Churn'}**.")
+        desc = (
+        f"**Klaster {i}**:\n"
+        f"- Usia rata-rata: **{int(p['Age'])} tahun**\n"
+        f"- Pendapatan tahunan: **Rp {p['Annual_Income'] / 1_000_000:.2f} Juta**\n"
+        f"- Total pengeluaran: **Rp {p['Total_Spend'] / 1_000_000:.2f} Juta**\n"
+        f"- Skor kepuasan: **{p['Satisfaction_Score']}**\n"
+        f"- Dominan: **{'Pria' if p['Gender'] == 'Pria' else 'Wanita'}**\n"
+        f"- Frekuensi belanja: **{'sering' if p['Num_of_Purchases'] > df['Num_of_Purchases'].mean() else 'jarang'}**\n"
+        f"- Respons promosi: **'{p['Promotion_Response']}'**\n"
+        f"- Status churn: **{'Cenderung Churn' if p['Target_Churn'] else 'Tidak Cenderung Churn'}**")
         cluster_descriptions[i] = desc
     results['cluster_descriptions'] = cluster_descriptions
 

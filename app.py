@@ -9,16 +9,16 @@ st.set_page_config(layout="wide", page_title="Dashboard AI Segmentasi Pelanggan"
 st.title("🚀 Dashboard AI untuk Segmentasi & Strategi Pemasaran")
 st.markdown("Unggah data pelanggan Anda untuk mendapatkan analisis mendalam, profil segmen, dan rekomendasi strategi berbasis AI yang dapat ditindaklanjuti.")
 
-# --- Sidebar untuk Input ---
-st.sidebar.header("⚙️ Panel Kontrol Analisis")
-
-uploaded_file = st.sidebar.file_uploader("Unggah file CSV data pelanggan Anda", type=["csv"])
+uploaded_file = st.file_uploader("Unggah file CSV data pelanggan Anda", type=["csv"])
 
 if uploaded_file is None:
     st.info("👋 Selamat datang! Silakan unggah file CSV data pelanggan melalui panel di sebelah kiri untuk memulai analisis.")
     st.stop()
 else:
     file_path = uploaded_file
+
+# --- Sidebar untuk Input ---
+st.sidebar.header("⚙️ Panel Kontrol Analisis")
 
 st.sidebar.subheader("Parameter Analisis")
 n_clusters = st.sidebar.slider("Pilih Jumlah Klaster (K)", 2, 10, 3, help="Pilih jumlah segmen pelanggan yang ingin Anda buat.")
